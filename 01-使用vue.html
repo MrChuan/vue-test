@@ -30,6 +30,10 @@
 		<p>{{message}}</p>
 		<button v-on:click="reverseMessage">反转Message</button>
 	</div>
+	<div id="two-way-binding">
+		<p>{{message}}</p>
+		<input v-model="message"/>
+	</div>
 <script type="text/javascript" src="./node_modules/vue/dist/vue.global.js"></script>
 <script type="text/javascript">
 	const Counter={
@@ -63,9 +67,17 @@
 			}
 		}
 	}
+	const TwoWayBinding = {
+		data(){
+			return{
+				message:'hello vue!'
+			}
+		}
+	}
 	Vue.createApp(Counter).mount("#counter");
 	Vue.createApp(bind_attribute).mount("#bind-attribute");
 	Vue.createApp(EventHanding).mount("#event-handling")
+	Vue.createApp(TwoWayBinding).mount("#two-way-binding")
 </script>
 	
 </body>
