@@ -34,6 +34,17 @@
 		<p>{{message}}</p>
 		<input v-model="message"/>
 	</div>
+	<div id="todo">
+		<ol>
+			<!--创建一个todo-item组件实例-->
+			<todo-item 
+			v-for="item in groceryList"
+			v-bind:todo="item"
+			v-bind:key="item.id"
+
+			></todo-item>
+		</ol>
+	</div>
 <script type="text/javascript" src="./node_modules/vue/dist/vue.global.js"></script>
 <script type="text/javascript">
 	const Counter={
@@ -74,6 +85,31 @@
 			}
 		}
 	}
+
+	
+	const TodoList = {
+		data(){
+			return{
+				groceryList:[
+					{id:0,text:'V1'},
+					{id:1,text:'v2'},
+					{id:2,text:'v3'}
+				]
+			}
+		}
+	}
+
+	const app = Vue.createApp(TodoList)
+	app.component('todo-item',{
+		props:['todo'],
+		template:'<li>{{todo.text}}</li>'
+	})
+	app.mount("#todo")
+/*
+	Vue.createApp(TodoList).component('todo-item', {
+  props: ['todo'],
+  template: `<li>{{ todo.text }}</li>`
+}).mount("#todo-list-app")*/
 	Vue.createApp(Counter).mount("#counter");
 	Vue.createApp(bind_attribute).mount("#bind-attribute");
 	Vue.createApp(EventHanding).mount("#event-handling")
