@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	
 </head>
 <style type="text/css">
 	#counter{
@@ -18,6 +19,8 @@
 	}
 </style>
 <body>
+	<div id="root"></div>
+	
 	<div id="counter">
 		Counter:{{counter}}
 	</div>
@@ -27,11 +30,11 @@
 		</span>
 	</div>
 	<div id="event-handling">
-		<p>{{message}}</p>
+		<p>{{message.toUpperCase()}}</p>
 		<button v-on:click="reverseMessage">反转Message</button>
 	</div>
 	<div id="two-way-binding">
-		<p>{{message}}</p>
+		<p>{{message.toUpperCase()}}</p>
 		<input v-model="message"/>
 	</div>
 	<div id="todo">
@@ -45,8 +48,22 @@
 			></todo-item>
 		</ol>
 	</div>
+	<div id="id1">
+		<a :href="url.toUpperCase()" :x="name">111{{name.toUpperCase()}}111</a>
+	</div>
 <script type="text/javascript" src="./node_modules/vue/dist/vue.global.js"></script>
+
 <script type="text/javascript">
+	const UrlBlind = {
+		
+		data(){
+			return{
+				url:'http://www.baidu.com',
+				name:"lisan"
+			}
+		}
+	}
+	Vue.createApp(UrlBlind).mount("#id1")
 	const Counter={
 		data(){
 			return {
